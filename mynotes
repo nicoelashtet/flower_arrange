@@ -1,0 +1,40 @@
+ <div id="clock"></div>
+
+ <button id="backToTop" onclick="scrollToTop()">トップへ戻る</button>
+
+
+
+
+#backToTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    background-color: #00c3ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none;
+}
+
+#backToTop:hover {
+    background-color: #0056b3;
+}
+
+
+window.onscroll = function () {
+    const button = document.getElementById('backToTop');
+    button.style.display = window.scrollY > 200 ? 'block' : 'none';
+};
+
+function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+
+setInterval(() => {
+        const now = new Date();
+        document.getElementById('clock').innerText = 
+            now.toLocaleTimeString('ja-JP', {timeZone: 'Asia/Yangon',  hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }, 1000);
